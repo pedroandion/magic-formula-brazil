@@ -102,16 +102,16 @@ def backtest(df_prices: pd.DataFrame, portfolios_by_date, trade_dates, market_va
     return daily_return
 
 def backtest_total(rebalance_dates: list, final_rank: pd.DataFrame, df_prices: pd.DataFrame, market_value: pd.DataFrame, portfolio_size: int, buy_size: int, weight_type: str, multiple_portfolios:bool = False)-> pd.DataFrame:
-    # Calculates the return of the portfolios: Long, Short and Long-Short
+    # Calculates the return of the Long portfolio
 
     # Parameter in magic_formula_portfolio that defines whether the function returns only the new stocks added on the date
     # This parameter is needed to calculate the return of simultaneous portfolios
     new_stocks = True if multiple_portfolios else False 
 
-    # Returns the Long and Short portfolios
+    # Returns the Long portfolio
     long_portfolio = magic_formula_portfolio(rebalance_dates, final_rank, portfolio_size, buy_size, new_stocks_only = new_stocks)
     
-    # Calculates the returns of the Long and Short portfolios
+    # Calculates the returns of the Long portfolio
     long_returns = backtest(df_prices, long_portfolio, rebalance_dates, market_value, weight_type, multiple_portfolios)
 
     port_type = 'multiple' if multiple_portfolios else 'single'
