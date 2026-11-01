@@ -77,7 +77,7 @@ def backtest(df_prices: pd.DataFrame, portfolios_by_date, trade_dates, market_va
                 daily_return.loc[dt0] = (daily_weights.loc[dt0] * (prices_pct.loc[dt0])).sum()
                 daily_weights.loc[dt1] = (daily_weights.loc[dt0] * (1 + prices_pct.loc[dt0])) / (1 + daily_return.loc[dt0])
 
-        daily_return.loc[dt1] = (daily_weights.loc[dt1] * (prices_pct.loc[dt0])).sum()
+        daily_return.loc[dt1] = (daily_weights.loc[dt1] * (prices_pct.loc[dt1])).sum()
 
     # Calculates the total portfolio returns as a single portfolio, rebalancing all assets on the rebalancing date
     else:
@@ -97,7 +97,7 @@ def backtest(df_prices: pd.DataFrame, portfolios_by_date, trade_dates, market_va
                 daily_return.loc[dt0] = (daily_weights.loc[dt0] * (prices_pct.loc[dt0])).sum()
                 daily_weights.loc[dt1] = (daily_weights.loc[dt0] * (1 + prices_pct.loc[dt0])) / (1 + daily_return.loc[dt0])
 
-        daily_return.loc[dt1] = (daily_weights.loc[dt1] * (prices_pct.loc[dt0])).sum()
+        daily_return.loc[dt1] = (daily_weights.loc[dt1] * (prices_pct.loc[dt1])).sum()
 
     return daily_return
 
