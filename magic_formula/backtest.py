@@ -63,7 +63,7 @@ def backtest(df_prices: pd.DataFrame, portfolios_by_date, trade_dates, market_va
                 
                 daily_return.loc[dt0] = (daily_weights.loc[dt0] * (prices_pct.loc[dt0])).sum()
                 daily_weights.loc[dt1] = (daily_weights.loc[dt0] * (1 + prices_pct.loc[dt0])) / (1 + daily_return.loc[dt0])
-                dtm1 = backtest_dates[date_location - 1]
+                dtm1 = prices_pct.index[prices_pct.index.get_loc(dt0) - 1]
                 daily_weights.loc[dt1, portfolios_by_date[dt0]] = compute_weights(portfolios_by_date[dt0], dtm1, market_value, weight_type, prices_pct)
                 i = trade_dates.index(dt0)
                 if i- 4 >= 0:
@@ -89,7 +89,7 @@ def backtest(df_prices: pd.DataFrame, portfolios_by_date, trade_dates, market_va
             if dt0 in trade_dates:
 
                 daily_return.loc[dt0] = (daily_weights.loc[dt0] * (prices_pct.loc[dt0])).sum()
-                dtm1 = backtest_dates[date_location - 1]
+                dtm1 = prices_pct.index[prices_pct.index.get_loc(dt0) - 1]
                 daily_weights.loc[dt1, portfolios_by_date[dt0]] = compute_weights(portfolios_by_date[dt0], dtm1, market_value, weight_type, prices_pct)
 
             else:
@@ -140,7 +140,7 @@ def backtest_quintiles(df_prices, quintile, trade_dates, market_value):
 
             return_by_stock.loc[dt0] = (daily_weights.loc[dt0] * (prices_pct.loc[dt0]))
             daily_return.loc[dt0] = return_by_stock.loc[dt0].sum()
-            dtm1 = backtest_dates[date_location - 1]
+            dtm1 = prices_pct.index[prices_pct.index.get_loc(dt0) - 1]
             daily_weights.loc[dt1] = compute_directional_weights(quintile.loc[dtm1], dtm1, market_value, weight_type = 'equal', stock_returns = prices_pct)
 
         else:
@@ -173,7 +173,7 @@ def backtest_longshort(df_prices, short_sig, long_sig, trade_dates, market_value
 
             return_by_stock.loc[dt0] = (daily_weights.loc[dt0] * (prices_pct.loc[dt0]))
             daily_return.loc[dt0] = return_by_stock.loc[dt0].sum()
-            dtm1 = backtest_dates[date_location - 1]
+            dtm1 = prices_pct.index[prices_pct.index.get_loc(dt0) - 1]
             daily_weights.loc[dt1] = compute_longshort_weights(short_sig.loc[dtm1], long_sig.loc[dtm1], dtm1, market_value, weight_type = 'equal', stock_returns = prices_pct)
 
         else:
