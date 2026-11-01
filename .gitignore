@@ -1,0 +1,14 @@
+# Credentials
+.env
+
+# Python and Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+
+# Local tools
+.claude/
+.vscode/
+.DS_Store
+~$*
