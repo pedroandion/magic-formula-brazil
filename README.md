@@ -2,7 +2,7 @@
 
 Replication of Joel Greenblatt's Magic Formula in the Brazilian stock market, from 2009 to 2024, with the backtest, the results and the article.
 
-**Article:** [Performance analysis of Greenblatt's Magic Formula in the Brazilian market](paper/magic_formula_brazil_revised_en.pdf). This is a revised English edition, and it opens with a note on what changed from the Portuguese version of 2025. The Portuguese originals are in [`paper/original_pt/`](paper/original_pt/).
+**Article:** [Performance analysis of Greenblatt's Magic Formula in the Brazilian market](paper/magic_formula_brazil_revised_en.pdf). This is a revised English edition, and it opens with a note on what changed from the Portuguese version of 2025. The Portuguese originals are in [`paper/original_pt/`](paper/original_pt/); the copy of the 2024 thesis leaves out the dedication and acknowledgements pages.
 
 The data collection and the construction of the signals are in the companion repository, [brazil-equity-factors](https://github.com/pedroandion/brazil-equity-factors).
 
